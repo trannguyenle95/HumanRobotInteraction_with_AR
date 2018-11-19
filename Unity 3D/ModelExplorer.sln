@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelExplorer", "ModelExplorer.csproj", "{FA4F3512-5EFC-1B92-AE78-F729AF6B0440}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelExplorer.Editor", "ModelExplorer.Editor.csproj", "{326771EB-8617-AF07-3324-7DB3E34D5474}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FA4F3512-5EFC-1B92-AE78-F729AF6B0440}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA4F3512-5EFC-1B92-AE78-F729AF6B0440}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA4F3512-5EFC-1B92-AE78-F729AF6B0440}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA4F3512-5EFC-1B92-AE78-F729AF6B0440}.Release|Any CPU.Build.0 = Release|Any CPU
+		{326771EB-8617-AF07-3324-7DB3E34D5474}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{326771EB-8617-AF07-3324-7DB3E34D5474}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{326771EB-8617-AF07-3324-7DB3E34D5474}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{326771EB-8617-AF07-3324-7DB3E34D5474}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,2 @@
+E:\HololensProject\HolographicAcademy-Holograms-211-Gesture\Completed\ModelExplorer\App\GeneratedProjects\UWP\Assembly-CSharp\Assembly-CSharp.csproj;x86
+E:\HololensProject\HolographicAcademy-Holograms-211-Gesture\Completed\ModelExplorer\App\ModelExplorer\ModelExplorer.csproj;x86
