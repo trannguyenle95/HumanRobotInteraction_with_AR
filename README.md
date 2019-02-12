@@ -11,4 +11,11 @@ catkin_make
 source devel/setup.bash
 ```
 * **ROS driver for CB1, CB2 and CB3+ controllers with Universal Robots**
+```cmd
+cd catkin_ws/src
+git clone https://github.com/ros-industrial/ur_modern_driver
+cd ..
+catkin_make
+source devel/setup.bash
+```
 * 
