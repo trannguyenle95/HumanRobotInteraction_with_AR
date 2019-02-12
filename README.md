@@ -1,7 +1,7 @@
 # Prerequisites
-First of all, the project need these supporting packages installed. The instruction assumes Catkin workspace has already installed.
+First of all, the project needs these supporting packages to be installed. The instruction assumes Catkin workspace has already installed.
 * **ROS-Industrial's universal_robot package**
-```bash
+```terminal
 cd catkin_ws/src
 
 ```
