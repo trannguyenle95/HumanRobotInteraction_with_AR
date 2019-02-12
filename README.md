@@ -23,8 +23,8 @@ The drivers are not working probaly after installation. We need to modify the ha
 cd catkin_ws/src/ur_modern_driver/src
 gedit ur_hardware_interface.cpp
 ```
-Then replacing all the contains in "ur_hardware_interface.cpp" by the code in this [link](https://github.com/iron-ox/ur_modern_driver/blob/883070d0b6c0c32b78bb1ca7155b8f3a1ead416c/src/ur_hardware_interface.cpp)
-Save cahnges and continue.
+Then replacing all the contains in "ur_hardware_interface.cpp" by the code in this [link](https://github.com/iron-ox/ur_modern_driver/blob/883070d0b6c0c32b78bb1ca7155b8f3a1ead416c/src/ur_hardware_interface.cpp).
+ Save cahnges and continue.
 
 ```cmd
 cd
@@ -32,3 +32,14 @@ cd catkin_ws
 catkin_make
 source devel/setup.bash
 ```
+
+# Simulation without Hololens and using Gazebo to testing publishing topics
+```cmd
+roslaunch ur_gazebo ur5.launch limited:=true
+roslaunch ur5_moveit_config ur5_moveit_planning_execution.launch sim:=true limited:=true
+roslaunch ur5_playing ignition.launch sim:=true
+```
+
+# Testing with real robot and Hololens
+* Running Hololens
+* 
