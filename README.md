@@ -42,4 +42,14 @@ roslaunch ur5_playing ignition.launch sim:=true
 
 # Testing with real robot and Hololens
 * Running Hololens
-* 
+* Running UR5 and ROS (UR5 is connected with ROS through Ethernet cable)
+```cmd
+roslaunch ur_modern_driver ur5_bringup.launch robot_ip:=ROBOT_IP_ADDRESS
+roslaunch ur5_moveit_config ur5_moveit_planning_execution.launch
+roslaunch ur5_playing ignition.launch
+```
+* Checking connection between ROS and Hololens
+```cmd
+roslaunch rosbridge_server rosbridge_websocket.launch
+```
+* Sending command from Hololens to control UR5
