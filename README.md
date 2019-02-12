@@ -34,7 +34,7 @@ source devel/setup.bash
 ```
 
 # Simulation without Hololens and using Gazebo to testing publishing topics
-The code of robot gripper should be uncomment-outed in the TEST marked lines and comment-outed the REAL marked lines. These launch files will bring out the Gazebo UR5 and some terminals to control it.
+The code of robot gripper should be uncomment-outed in the TEST marked lines and comment-outed the REAL marked lines. These launch files will bring out the Gazebo UR5 and some terminals to control it. These terminals presens as the psuedo hololens.
 ```cmd
 roslaunch ur_gazebo ur5.launch limited:=true
 roslaunch ur5_moveit_config ur5_moveit_planning_execution.launch sim:=true limited:=true
