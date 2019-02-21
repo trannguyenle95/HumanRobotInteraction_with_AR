@@ -7,17 +7,22 @@
 
 import rospy
 from std_msgs.msg import Bool
+from geometry_msgs.msg import Pose
 
 
 def talker():
-    pub = rospy.Publisher('gripper_command', Bool, queue_size=10)
+    pub = rospy.Publisher('gripper_command', Pose, queue_size=10)
     rospy.init_node('psuedo_gripper_command', anonymous=True)
     rate = rospy.Rate(1)  # 0.05hz
 
     while not rospy.is_shutdown():
 
         print('=======================')
-        command = bool(input('Input command: '))
+
+        command = Pose()
+
+        command.position.x = float(input('Input command: '))
+
 
         pub.publish(command)
 

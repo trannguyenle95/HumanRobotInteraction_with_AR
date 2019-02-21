@@ -7,15 +7,15 @@
         <!--<arg name="robot_ip" value="192.168.125.100"/>-->
     <!--</include>-->
 
+    <node pkg="ur5_playing" type="ur5_cartesian_pose.py" name="ur5_cartesian_pose" output="screen"
+    launch-prefix="gnome-terminal --command"/>
+
+    <node pkg="ur5_playing" type="ur5_gripper.py" name="ur5_gripper" output="screen"
+    launch-prefix="gnome-terminal --command"/>
+
     <node if="$(arg sim)" pkg="ur5_playing" type="psuedo_gripper_command.py" name="psuedo_gripper_command"
           launch-prefix="gnome-terminal --command" output="screen"/>
     <node if="$(arg sim)" pkg="ur5_playing" type="psuedo_hololen.py" name="psuedo_hololen" output="screen"
     launch-prefix="gnome-terminal --command"/>
-
-    <node pkg="ur5_playing" type="ur5_cartesian_pose.py" name="ur5_cartesian_pose" output="screen"
-    launch-prefix="gnome-terminal --command"/>
-
-    <!--<node pkg="ur5_playing" type="ur5_gripper.py" name="ur5_gripper" output="screen"-->
-    <!--launch-prefix="gnome-terminal &#45;&#45;command"/>-->
 
 </launch>

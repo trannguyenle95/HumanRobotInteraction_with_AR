@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-# This script is subscriber of hololen command, which publishes command from hoblolen user.
+# This script is subscriber of /hololens topic, which is published from HoloLens user.
 # The code is written based on Moveit's move_group_Python_interface.py
 # Student: Toan Le - 267945
 # Course: Robot Project Work 2018-2019
