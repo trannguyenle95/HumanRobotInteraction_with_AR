@@ -16,6 +16,7 @@ using UnityEngine;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
+using UnityEngine.UI;
 
 #if UNITY_EDITOR
 using WebSocketSharp;
@@ -35,17 +36,20 @@ public class Source : MonoBehaviour {
     // public Button communicator;
 
     //VM IP adress used for connection
-    private string host = "130.230.148.104";
-
+    private string host = "192.168.8.118"; //tmr change ip to 192.168.8.x
     //Default ROSBridge port
     private int port = 9090;
     public bool con = false;
+    public float close;
 
     public GameObject turtle;
-    public GameObject plane;
+    //public GameObject plane;
 
     //Value that will be send to teleport_absolute
     public float tx, ty, tz;
+    public float j0, j1, j2, j3, j4, j5;
+    public Color newColor;
+    private Button connector;
 
 #if UNITY_EDITOR
     //WebSocket client from WebSocketSharp
@@ -64,6 +68,7 @@ public class Source : MonoBehaviour {
     {
 
 #if UNITY_EDITOR
+
         //Connecting in Unity play mode
         if (Input.GetKeyDown(KeyCode.C))
         {
@@ -79,28 +84,40 @@ public class Source : MonoBehaviour {
         //Reset in Unity Play mode
         if (Input.GetKeyDown(KeyCode.I))
         {
-            //turtle.transform.localPosition = new Vector3(0, 0, -0.7f);
             tx = -0.1f;
             ty = 0.4f;
             tz = 0.6f;
             SendPublisher("/hololens", "{\"position\": {\"x\": " + tx + ", \"y\": " + ty + ", \"z\": " + tz + "}}");
 
         }
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            close = 1.0f;
+            SendPublisher("/gripper_command", "{\"position\": {\"x\": " + close + "}}");
+        }
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            close = 0.0f;
+            SendPublisher("/gripper_command", "{\"position\": {\"x\": " + close + "}}");
 
+        }
         //Clear in Unity Play mode
         if (Input.GetKeyDown(KeyCode.R))
         {
-          //  SendService("/clear", "");
+            //  SendService("/clear", "");
         }
 
 #endif
+        connector = GameObject.Find("ConnectButton").GetComponent<UnityEngine.UI.Button>();
         if (con)
         {
-          //  communicator.ChangeButtonState(Button.State.Selected);
-
+            //Changes the button's Normal color to the new color.
+            ColorBlock cb = connector.colors;
+            cb.normalColor = Color.green;
+            connector.colors = cb;
             turtle.SetActive(true);
 
-            plane.GetComponent<Renderer>().material.color = new Color(0, 0, 0.4f);
+            //plane.GetComponent<Renderer>().material.color = new Color(0, 0, 0.4f);
 
             //turtle.transform.parent = plane.transform;
 
@@ -137,19 +154,22 @@ public class Source : MonoBehaviour {
             //send to ROS to update the turtle position.
             //tx = (5.54f + (turtle.transform.localPosition.x * 11.78f))/10;
             //ty = (5.54f + (turtle.transform.localPosition.y * 11.78f)) / 10;
-            tx = GameObject.Find("Sphere(Clone)").transform.position.x;
-            ty = GameObject.Find("Sphere(Clone)").transform.position.y;
-            tz = GameObject.Find("Sphere(Clone)").transform.position.z;
+            tx = -GameObject.Find("Sphere(Clone)").transform.position.x;
+            tz = GameObject.Find("Sphere(Clone)").transform.position.y;
+            ty = -GameObject.Find("Sphere(Clone)").transform.position.z;
             //Accessing ROS service turtle1/teleport_absolute to update turtle position
             //SendService("/turtle1/teleport_absolute", "{\"x\": " + tx + ", \"y\": " + ty + ", \"theta\": 0}");
+            SendAdvertise("/gripper_command","geometry_msgs/Pose");
             SendAdvertise("/hololens", "geometry_msgs/Pose");
-
+            SendSubscriber("joint_states", "sensor_msgs/JointState");
         }
         else
         {
-          //  communicator.ChangeButtonState(Button.State.Inactive);
-
-            plane.GetComponent<Renderer>().material.color = new Color(1, 1, 1);
+            //  communicator.ChangeButtonState(Button.State.Inactive);
+            ColorBlock cb = connector.colors;
+            cb.normalColor = Color.red;
+            connector.colors = cb;
+            //plane.GetComponent<Renderer>().material.color = new Color(1, 1, 1);
 
             turtle.SetActive(false);
         }
@@ -158,17 +178,24 @@ public class Source : MonoBehaviour {
 
     //Tap Gesture on HL
 #if !UNITY_EDITOR
-    void OnSelect()
+    void OnConnect()
     {
         //if ((InteractibleManager.Instance.FocusedGameObject == GameObject.Find("Connector")) && (!con))
         if (!con)
         {
             Connect();
+         //Changes the button's Normal color to the new color.
+            ColorBlock cb = connector.colors;
+            cb.normalColor = Color.green; 
+            connector.colors = cb;
         }
 
         if  (con)
         {
             Disconnect();
+            ColorBlock cb = connector.colors;
+            cb.normalColor = Color.red;
+            connector.colors = cb;
         }
     }
 #endif
@@ -193,7 +220,7 @@ public class Source : MonoBehaviour {
 #endif
     }
 
-//Successfull network connection handler on HL
+    //Successfull network connection handler on HL
 #if !UNITY_EDITOR
     public void NetworkConnectedHandler(IAsyncAction asyncInfo, AsyncStatus status)
     {
@@ -214,7 +241,7 @@ public class Source : MonoBehaviour {
     }
 #endif
 
-//Starting connection between Unity play mode and ROS.
+    //Starting connection between Unity play mode and ROS.
     private void Run()
     {
 #if UNITY_EDITOR
@@ -231,7 +258,7 @@ public class Source : MonoBehaviour {
 
     public void Disconnect()
     {
-//Killing connection
+        //Killing connection
 #if UNITY_EDITOR
         Thread.Abort();
         Socket.Close();
@@ -256,11 +283,20 @@ public class Source : MonoBehaviour {
     public void SendAdvertise(string topic, string topic_type)
     {
 #if UNITY_EDITOR
-        if (Socket!= null)
+        if (Socket != null)
         {
             string ad = Advertise(topic, topic_type);
             Socket.Send(ad);
         }
+#endif
+
+#if !UNITY_EDITOR
+       if (messageWebSocket != null)
+            {
+            string ad = Advertise(topic, topic_type);
+            dataWriter.WriteString(ad);
+            dataWriter.StoreAsync();            
+            }
 #endif
     }
     //Sending the service message
@@ -280,18 +316,61 @@ public class Source : MonoBehaviour {
 
 
 
-//#if !UNITY_EDITOR
-//        if (messageWebSocket != null)
-//        {
-//            string s = CallService(service, args);
-//            dataWriter.WriteString(s);
-//            dataWriter.StoreAsync();
-//        }
-//#endif
+#if !UNITY_EDITOR
+       if (messageWebSocket != null)
+            {
+            string p = Publisher(topic, msg);
+            dataWriter.WriteString(p);
+            dataWriter.StoreAsync();
+            }     
+            //string s = CallService(service, args);
+            //dataWriter.WriteString(s);
+            //dataWriter.StoreAsync();
+        
+#endif
     }
 
+    public void SendSubscriber(string topic, string topic_type)
+    {
+#if UNITY_EDITOR
+        if (Socket != null)
+        {
+            string sub = Subscriber(topic, topic_type);
+            Socket.Send(sub);
+                
+        }
+#endif
 
-//Building the service message that will be send to ROS
+
+
+#if !UNITY_EDITOR
+       if (messageWebSocket != null)
+            {
+            string sub = Subscriber(topic, topic_type);
+            dataWriter.WriteString(sub);
+            dataWriter.StoreAsync();
+            }     
+            //string s = CallService(service, args);
+            //dataWriter.WriteString(s);
+            //dataWriter.StoreAsync();
+        
+#endif
+    }
+#if !UNITY_EDITOR
+void OnPublish()
+        {
+         SendPublisher("/hololens", "{\"position\": {\"x\": " + tx + ", \"y\": " + ty + ", \"z\": " + tz + "}}");
+        }
+void ResetInit()
+        {
+         tx = -0.1f;
+         ty = 0.4f;
+         tz = 0.6f;
+         SendPublisher("/hololens", "{\"position\": {\"x\": " + tx + ", \"y\": " + ty + ", \"z\": " + tz + "}}");
+        }
+#endif
+
+    //Building the service message that will be send to ROS
     public static string CallService(string service, string args)
     {
         if ((args == null) || args.Equals(""))
@@ -309,12 +388,20 @@ public class Source : MonoBehaviour {
             return "{\"op\": \"publish\", \"topic\": \"" + topic + "\", \"msg\": " + msg + "}";
     }
 
-    //Building the publisher message that will be send to ROS
+    //Building the advertise topic that will be send to ROS
     public static string Advertise(string topic, string topic_type)
     {
         if ((topic_type == null) || topic_type.Equals(""))
             return "{\"op\": \"advertise\", \"topic\": \"" + topic + "\"}";
         else
             return "{\"op\": \"advertise\", \"topic\": \"" + topic + "\", \"type\": \""  + topic_type + "\"}";
+    }
+    //Building the subscrier message that will be send to ROS
+    public static string Subscriber(string topic, string topic_type)
+    {
+        if ((topic_type == null) || topic_type.Equals(""))
+            return "{\"op\": \"subscribe\", \"topic\": \"" + topic + "\"}";
+        else
+            return "{\"op\": \"subscribe\", \"topic\": \"" + topic + "\", \"type\": \"" + topic_type + "\"}";
     }
 }

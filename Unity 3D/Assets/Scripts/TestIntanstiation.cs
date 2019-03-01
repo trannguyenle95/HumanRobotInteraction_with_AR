@@ -12,7 +12,7 @@ public class TestIntanstiation : MonoBehaviour
     // list that holds all created objects - deleate all instances if desired
     public List<GameObject> createdObjects = new List<GameObject>();
 
-    private float minX, maxX, minY, maxY;
+    //private float minX, maxX, minY, maxY;
 
     void Start()
     {
@@ -21,10 +21,10 @@ public class TestIntanstiation : MonoBehaviour
         Vector2 bottomCorner = Camera.main.ViewportToWorldPoint(new Vector3(0,0, camDistance));
         Vector2 topCorner = Camera.main.ViewportToWorldPoint(new Vector3(1,1, camDistance));
 
-        minX = bottomCorner.x;
-        maxX = topCorner.x;
-        minY = bottomCorner.y;
-        maxY = topCorner.y;
+        //minX = bottomCorner.x;
+        //maxX = topCorner.x;
+        //minY = bottomCorner.y;
+        //maxY = topCorner.y;
     }
 
     public void CreateObject()
@@ -50,8 +50,16 @@ public class TestIntanstiation : MonoBehaviour
         }
         createdObjects.Clear();
       }
-    public void OnClick()
+    public void OnConnect()
     {
-        equipPrefab.SendMessageUpwards("OnSelect", SendMessageOptions.DontRequireReceiver);
+        equipPrefab.SendMessageUpwards("OnConnect", SendMessageOptions.DontRequireReceiver);
+    }
+    public void OnPublish()
+    {
+        equipPrefab.SendMessageUpwards("OnPublish", SendMessageOptions.DontRequireReceiver);
+    }
+    public void ResetInit()
+    {
+        equipPrefab.SendMessageUpwards("ResetInit", SendMessageOptions.DontRequireReceiver);
     }
 }

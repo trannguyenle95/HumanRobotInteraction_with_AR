@@ -12,6 +12,9 @@
     <UseEmulator>true</UseEmulator>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <RemoteDebugMachine>130.230.148.45</RemoteDebugMachine>
+    <AuthenticationMode>Universal</AuthenticationMode>
+    <RemoteDebugEnabled>false</RemoteDebugEnabled>
     <DeviceId>C0E5F7CA-3595-E167-7DFE-3D367F6E3B3E</DeviceId>
     <UseEmulator>true</UseEmulator>
   </PropertyGroup>

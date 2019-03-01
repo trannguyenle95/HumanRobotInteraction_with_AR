@@ -5,7 +5,7 @@ VisualStudioVersion = 15.8.28010.2046
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelExplorer", "ModelExplorer\ModelExplorer.csproj", "{13A45C13-3265-47B8-BC48-A553B569DF55}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "E:\HololensProject\HolographicAcademy-Holograms-211-Gesture\Completed\ModelExplorer\App\GeneratedProjects\UWP\Assembly-CSharp\Assembly-CSharp.csproj", "{8D3F0BFE-18D2-494A-BE9B-7050D134BA54}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "E:\HololensProject\HolographicAcademy-Holograms-211-Gesture\Completed\ModelExplorer\App\GeneratedProjects\UWP\Assembly-CSharp\Assembly-CSharp.csproj", "{3E6EB5BF-EF2C-4E0F-A240-653C89D29247}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,29 +47,29 @@ Global
 		{13A45C13-3265-47B8-BC48-A553B569DF55}.Release|x86.ActiveCfg = Release|x86
 		{13A45C13-3265-47B8-BC48-A553B569DF55}.Release|x86.Build.0 = Release|x86
 		{13A45C13-3265-47B8-BC48-A553B569DF55}.Release|x86.Deploy.0 = Release|x86
-		{8D3F0BFE-18D2-494A-BE9B-7050D134BA54}.Debug|ARM.ActiveCfg = Debug|ARM
-		{8D3F0BFE-18D2-494A-BE9B-7050D134BA54}.Debug|ARM.Build.0 = Debug|ARM
-		{8D3F0BFE-18D2-494A-BE9B-7050D134BA54}.Debug|x64.ActiveCfg = Debug|x64
-		{8D3F0BFE-18D2-494A-BE9B-7050D134BA54}.Debug|x64.Build.0 = Debug|x64
-		{8D3F0BFE-18D2-494A-BE9B-7050D134BA54}.Debug|x86.ActiveCfg = Debug|x86
-		{8D3F0BFE-18D2-494A-BE9B-7050D134BA54}.Debug|x86.Build.0 = Debug|x86
-		{8D3F0BFE-18D2-494A-BE9B-7050D134BA54}.Master|ARM.ActiveCfg = Master|ARM
-		{8D3F0BFE-18D2-494A-BE9B-7050D134BA54}.Master|ARM.Build.0 = Master|ARM
-		{8D3F0BFE-18D2-494A-BE9B-7050D134BA54}.Master|x64.ActiveCfg = Master|x64
-		{8D3F0BFE-18D2-494A-BE9B-7050D134BA54}.Master|x64.Build.0 = Master|x64
-		{8D3F0BFE-18D2-494A-BE9B-7050D134BA54}.Master|x86.ActiveCfg = Master|x86
-		{8D3F0BFE-18D2-494A-BE9B-7050D134BA54}.Master|x86.Build.0 = Master|x86
-		{8D3F0BFE-18D2-494A-BE9B-7050D134BA54}.Release|ARM.ActiveCfg = Release|ARM
-		{8D3F0BFE-18D2-494A-BE9B-7050D134BA54}.Release|ARM.Build.0 = Release|ARM
-		{8D3F0BFE-18D2-494A-BE9B-7050D134BA54}.Release|x64.ActiveCfg = Release|x64
-		{8D3F0BFE-18D2-494A-BE9B-7050D134BA54}.Release|x64.Build.0 = Release|x64
-		{8D3F0BFE-18D2-494A-BE9B-7050D134BA54}.Release|x86.ActiveCfg = Release|x86
-		{8D3F0BFE-18D2-494A-BE9B-7050D134BA54}.Release|x86.Build.0 = Release|x86
+		{3E6EB5BF-EF2C-4E0F-A240-653C89D29247}.Debug|ARM.ActiveCfg = Debug|ARM
+		{3E6EB5BF-EF2C-4E0F-A240-653C89D29247}.Debug|ARM.Build.0 = Debug|ARM
+		{3E6EB5BF-EF2C-4E0F-A240-653C89D29247}.Debug|x64.ActiveCfg = Debug|x64
+		{3E6EB5BF-EF2C-4E0F-A240-653C89D29247}.Debug|x64.Build.0 = Debug|x64
+		{3E6EB5BF-EF2C-4E0F-A240-653C89D29247}.Debug|x86.ActiveCfg = Debug|x86
+		{3E6EB5BF-EF2C-4E0F-A240-653C89D29247}.Debug|x86.Build.0 = Debug|x86
+		{3E6EB5BF-EF2C-4E0F-A240-653C89D29247}.Master|ARM.ActiveCfg = Master|ARM
+		{3E6EB5BF-EF2C-4E0F-A240-653C89D29247}.Master|ARM.Build.0 = Master|ARM
+		{3E6EB5BF-EF2C-4E0F-A240-653C89D29247}.Master|x64.ActiveCfg = Master|x64
+		{3E6EB5BF-EF2C-4E0F-A240-653C89D29247}.Master|x64.Build.0 = Master|x64
+		{3E6EB5BF-EF2C-4E0F-A240-653C89D29247}.Master|x86.ActiveCfg = Master|x86
+		{3E6EB5BF-EF2C-4E0F-A240-653C89D29247}.Master|x86.Build.0 = Master|x86
+		{3E6EB5BF-EF2C-4E0F-A240-653C89D29247}.Release|ARM.ActiveCfg = Release|ARM
+		{3E6EB5BF-EF2C-4E0F-A240-653C89D29247}.Release|ARM.Build.0 = Release|ARM
+		{3E6EB5BF-EF2C-4E0F-A240-653C89D29247}.Release|x64.ActiveCfg = Release|x64
+		{3E6EB5BF-EF2C-4E0F-A240-653C89D29247}.Release|x64.Build.0 = Release|x64
+		{3E6EB5BF-EF2C-4E0F-A240-653C89D29247}.Release|x86.ActiveCfg = Release|x86
+		{3E6EB5BF-EF2C-4E0F-A240-653C89D29247}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {62197D67-0C90-4DF4-9832-80485A79E6E5}
+		SolutionGuid = {E9598396-AA20-4926-9E9A-E78C2B0D0DE5}
 	EndGlobalSection
 EndGlobal

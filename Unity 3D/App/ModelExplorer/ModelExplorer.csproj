@@ -356,7 +356,7 @@
 
   <ItemGroup>
     <ProjectReference Include="E:\HololensProject\HolographicAcademy-Holograms-211-Gesture\Completed\ModelExplorer\App\GeneratedProjects\UWP\Assembly-CSharp\Assembly-CSharp.csproj">
-      <Project>{17eee814-55ad-485d-9d12-41ec506cee28}</Project>
+      <Project>{09b0f0f1-04d4-4be8-b998-20ef4632377b}</Project>
       <Name>Assembly-CSharp</Name>
       <Private>False</Private>
     </ProjectReference>
